@@ -17,7 +17,7 @@ export const searchStackOverflow = async (query: string) => {
     );
     data = await res.json();
   }
-
+  console.log(data.items.map((q: any) => q.link));
   return data.items.slice(0, 3).map((q: any) => ({
     title: q.title,
     link: q.link,

@@ -58,7 +58,7 @@ export const a2aAgentRoute = registerApiRoute("/a2a/agent/:agentId", {
         role: msg.role,
         content:
           msg.parts
-            ?.map((part) => {
+            ?.map((part: any) => {
               if (part.kind === "text") return part.text;
               if (part.kind === "data") return JSON.stringify(part.data);
               return "";
@@ -86,7 +86,7 @@ export const a2aAgentRoute = registerApiRoute("/a2a/agent/:agentId", {
           name: "ToolResults",
           parts: response.toolResults.map((result) => ({
             kind: "data",
-            data: result,
+            text: result.toString(),
           })),
         });
       }
@@ -132,18 +132,22 @@ export const a2aAgentRoute = registerApiRoute("/a2a/agent/:agentId", {
         },
       });
     } catch (error) {
-      return c.json(
-        {
-          jsonrpc: "2.0",
-          id: null,
-          error: {
-            code: -32603,
-            message: "Internal error",
-            data: { details: error.message },
+      if (error instanceof Error) {
+        console.error("Error details:", error);
+
+        return c.json(
+          {
+            jsonrpc: "2.0",
+            id: null,
+            error: {
+              code: -32603,
+              message: "Internal error",
+              data: { details: error.message },
+            },
           },
-        },
-        500
-      );
+          500
+        );
+      }
     }
   },
 });

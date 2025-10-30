@@ -3,7 +3,7 @@ import { PinoLogger } from "@mastra/loggers";
 import { LibSQLStore } from "@mastra/libsql";
 import { debugWorkflow } from "./workflows/debug-workflow";
 import { debugAgent } from "./agents/debug-agent";
-
+import { a2aAgentRoute } from "./a2a";
 export const mastra = new Mastra({
   workflows: { debugWorkflow },
   agents: { debugAgent },
@@ -21,5 +21,12 @@ export const mastra = new Mastra({
   observability: {
     // Enables DefaultExporter and CloudExporter for AI tracing
     default: { enabled: true },
+  },
+  server: {
+    build: {
+      openAPIDocs: true,
+      swaggerUI: true,
+    },
+    apiRoutes: [a2aAgentRoute],
   },
 });
