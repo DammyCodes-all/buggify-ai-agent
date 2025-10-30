@@ -3,11 +3,6 @@ import { PinoLogger } from "@mastra/loggers";
 import { LibSQLStore } from "@mastra/libsql";
 import { debugWorkflow } from "./workflows/debug-workflow";
 import { debugAgent } from "./agents/debug-agent";
-import {
-  toolCallAppropriatenessScorer,
-  completenessScorer,
-  translationScorer,
-} from "./scorers/weather-scorer";
 
 export const mastra = new Mastra({
   workflows: { debugWorkflow },

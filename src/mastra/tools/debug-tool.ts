@@ -1,12 +1,23 @@
 import { createTool } from "@mastra/core";
 import z from "zod";
 export const searchStackOverflow = async (query: string) => {
-  const res = await fetch(
-    `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=relevance&q=${encodeURIComponent(
-      query
-    )}&site=stackoverflow`
-  );
-  const data = await res.json();
+  let url = `https://api.stackexchange.com/2.3/similar?order=desc&sort=relevance&title=${encodeURIComponent(
+    query
+  )}&site=stackoverflow`;
+
+  let res = await fetch(url);
+  let data = await res.json();
+
+  if (!data.items?.length) {
+    // fallback to advanced search
+    res = await fetch(
+      `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=relevance&title=${encodeURIComponent(
+        query
+      )}&site=stackoverflow`
+    );
+    data = await res.json();
+  }
+
   return data.items.slice(0, 3).map((q: any) => ({
     title: q.title,
     link: q.link,

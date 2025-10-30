@@ -1,6 +1,5 @@
 import { createStep, createWorkflow } from "@mastra/core/workflows";
 import { z } from "zod";
-import { debugAgent } from "../agents/debug-agent";
 import { searchStackOverflow } from "../tools/debug-tool";
 
 const errorInputSchema = z.object({
