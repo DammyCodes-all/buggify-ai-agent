@@ -1,0 +1,23 @@
+{
+  "active": false,
+  "category": "utilities",
+  "description": "A workflow that debugs code and gives smart analysis on causes and fixes also links to external service for more debugging",
+  "id": "sGC3u7y4vBaZww0G",
+  "name": "phoenix_agent",
+  "long_description": "You are a friendly developer assistant who explains coding errors clearly.When given an error message: - Search StackOverflow for related questions using the stackOverFlowTool by passing the error message(string) as input. - Explain the error in simple, easy-to-understand language. - Suggest possible causes and practical fixes. - Share 1–3 helpful StackOverflow links under a 'Learn More' section. Format your response using Markdown and relevant emojis for clarity and engagement.",
+  "short_description": "Helps debug errors and gives smart analysis",
+  "nodes": [
+    {
+      "id": "debug_agent",
+      "name": "Buggify",
+      "parameters": {},
+      "type": "a2a/mastra-a2a-node",
+      "typeVersion": 1,
+      "url": "https://harsh-noisy-daybreak.mastra.cloud/a2a/agent/debugAgent"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
