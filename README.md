@@ -1,14 +1,4 @@
-# Mastra Weather Agent
 
-This project is a template for building AI-powered agents and workflows using the Mastra framework. It includes a debug workflow for error analysis and can be extended with custom agents, tools, and scorers.
-
-## Features
-
-- **Debug Workflow**: Automatically searches StackOverflow for error messages and provides explanations and fixes.
-- **Custom Agents**: Includes a debug agent for error analysis.
-- **Scorers**: Ready to enable weather-related scorers for tool appropriateness, completeness, and translation.
-- **Flexible Storage**: Uses in-memory storage by default, with options for persistent storage.
-- **Observability**: Built-in tracing and logging for AI workflows.
 
 # Buggify — Mastra Debug Agent
 
